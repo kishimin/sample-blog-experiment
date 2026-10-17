@@ -18,12 +18,12 @@ describe("SelectForm", () => {
     expect(screen.getByRole("combobox", { name: "のんびり" })).toBeVisible();
   });
 
-  test("のんびりというセレクトの初期値は未である", () => {
+  test("のんびりというセレクトの初期値は未設定である", () => {
     setup();
 
     expect(
       screen.getByRole("combobox", { name: "のんびり" }),
-    ).toHaveTextContent("未");
+    ).toHaveTextContent("未設定");
   });
 
   test("のんびりというセレクトの選択肢が仕様通りである", async () => {
@@ -38,7 +38,7 @@ describe("SelectForm", () => {
 
     const items = within(list).getAllByRole("option");
 
-    const expected = ["未", "のんびり", "マイペース"];
+    const expected = ["未設定", "のんびり", "マイペース"];
 
     items.forEach((item, index) => {
       expect(item).toHaveTextContent(expected[index]);

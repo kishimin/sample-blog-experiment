@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 
 export const PACETYPE = {
-  NOT: "未",
+  NOT: "未設定",
   NONBIRI: "のんびり",
   MYPACE: "マイペース",
 } as const;
