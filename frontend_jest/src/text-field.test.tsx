@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { TextForm } from "./text-field";
+import { TextFieldForm } from "./text-field";
 import userEvent from "@testing-library/user-event";
 
 const setup = () => {
   const user = userEvent.setup();
 
-  render(<TextForm />);
+  render(<TextFieldForm />);
 
   return { user };
 };

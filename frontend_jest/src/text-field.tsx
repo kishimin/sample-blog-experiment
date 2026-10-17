@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import { useState } from "react";
 
-export const TextForm = () => {
+export const TextFieldForm = () => {
   const [text, setText] = useState<string>("");
 
   return (
