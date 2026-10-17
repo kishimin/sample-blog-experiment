@@ -54,3 +54,11 @@ test("のんびりというセレクトでのんびりを選択できる", async
 
   expect(select).toHaveTextContent("のんびり");
 });
+
+test("のんびりというセレクトのヘルパーテキストが表示される", () => {
+  setup();
+
+  expect(
+    screen.getByRole("combobox", { name: "のんびり" }),
+  ).toHaveAccessibleDescription("のんびり");
+});
