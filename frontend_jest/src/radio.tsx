@@ -14,8 +14,10 @@ const PACETYPE = {
   MYPACE: "マイペース",
 } as const;
 
+type PaceType = (typeof PACETYPE)[keyof typeof PACETYPE];
+
 export const RadioForm = () => {
-  const [type, setType] = useState<string>(PACETYPE.NOT);
+  const [type, setType] = useState<PaceType>(PACETYPE.NOT);
 
   return (
     <FormControl>
@@ -26,20 +28,22 @@ export const RadioForm = () => {
         aria-describedby={"radio-description"}
         name={"pace"}
         value={type}
-        onChange={(e) => setType(e.target.value)}
       >
         <FormControlLabel
           value={PACETYPE.NOT}
+          onChange={() => setType(PACETYPE.NOT)}
           control={<Radio />}
           label={PACETYPE.NOT}
         />
         <FormControlLabel
           value={PACETYPE.NONBIRI}
+          onChange={() => setType(PACETYPE.NONBIRI)}
           control={<Radio />}
           label={PACETYPE.NONBIRI}
         />
         <FormControlLabel
           value={PACETYPE.MYPACE}
+          onChange={() => setType(PACETYPE.MYPACE)}
           control={<Radio />}
           label={PACETYPE.MYPACE}
         />
