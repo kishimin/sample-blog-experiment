@@ -28,22 +28,27 @@ export const RadioForm = () => {
         aria-describedby={"radio-description"}
         name={"pace"}
         value={type}
+        onChange={(_, value) => {
+          for (const pace of Object.values(PACETYPE)) {
+            if (pace === value) {
+              setType(pace);
+              break;
+            }
+          }
+        }}
       >
         <FormControlLabel
           value={PACETYPE.NOT}
-          onChange={() => setType(PACETYPE.NOT)}
           control={<Radio />}
           label={PACETYPE.NOT}
         />
         <FormControlLabel
           value={PACETYPE.NONBIRI}
-          onChange={() => setType(PACETYPE.NONBIRI)}
           control={<Radio />}
           label={PACETYPE.NONBIRI}
         />
         <FormControlLabel
           value={PACETYPE.MYPACE}
-          onChange={() => setType(PACETYPE.MYPACE)}
           control={<Radio />}
           label={PACETYPE.MYPACE}
         />
