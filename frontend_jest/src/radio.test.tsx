@@ -20,8 +20,11 @@ test("のんびりというラジオの初期値は未設定である", () => {
   setup();
 
   expect(screen.getByRole("radio", { name: "未設定" })).toBeChecked();
-  expect(screen.getByRole("radio", { name: "のんびり" })).not.toBeChecked();
-  expect(screen.getByRole("radio", { name: "マイペース" })).not.toBeChecked();
+  const unselected = ["のんびり", "マイペース"];
+
+  unselected.forEach((name) => {
+    expect(screen.getByRole("radio", { name })).not.toBeChecked();
+  });
 });
 
 test("のんびりというラジオの選択肢が仕様通りである", () => {
