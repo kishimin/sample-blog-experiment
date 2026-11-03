@@ -7,7 +7,12 @@ import {
   RadioGroup,
 } from "@mui/material";
 import { useState } from "react";
-import { PACETYPE } from "./select-field";
+
+const PACETYPE = {
+  NOT: "未設定",
+  NONBIRI: "のんびり",
+  MYPACE: "マイペース",
+} as const;
 
 export const RadioForm = () => {
   const [type, setType] = useState<string>(PACETYPE.NOT);

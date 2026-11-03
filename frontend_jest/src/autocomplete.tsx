@@ -1,6 +1,13 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
-import { PACETYPE, type PaceType } from "./select-field";
+
+const PACETYPE = {
+  NOT: "未設定",
+  NONBIRI: "のんびり",
+  MYPACE: "マイペース",
+} as const;
+
+type PaceType = (typeof PACETYPE)[keyof typeof PACETYPE];
 
 export const AutocompleteForm = () => {
   const [type, setType] = useState<PaceType | null>(PACETYPE.NOT);
