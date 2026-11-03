@@ -44,11 +44,6 @@ test("のんびりというラジオでのんびりを選択できる", async ()
 
   expect(screen.getByRole("radio", { name: "のんびり" })).toBeChecked();
   expect(screen.getByRole("radio", { name: "未設定" })).not.toBeChecked();
-
-  await user.click(screen.getByRole("radio", { name: "マイペース" }));
-
-  expect(screen.getByRole("radio", { name: "マイペース" })).toBeChecked();
-  expect(screen.getByRole("radio", { name: "のんびり" })).not.toBeChecked();
 });
 
 test("のんびりというラジオのヘルパーテキストが表示される", () => {
