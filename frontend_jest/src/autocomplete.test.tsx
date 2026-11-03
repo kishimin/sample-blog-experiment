@@ -60,7 +60,7 @@ test("のんびりというオートコンプリートで候補を絞り込ん�
   await user.type(input, "のん");
 
   expect(screen.getByRole("option", { name: "のんびり" })).toBeVisible();
-  expect(screen.queryByRole("option", { name: "マイペース" })).not.toBeInTheDocument();
+  expect(screen.queryByRole("option", { name: "未設定" })).not.toBeInTheDocument();
 
   await user.click(screen.getByRole("option", { name: "のんびり" }));
 
