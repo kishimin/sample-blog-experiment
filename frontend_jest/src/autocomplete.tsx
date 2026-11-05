@@ -1,4 +1,10 @@
-import { Autocomplete, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  OutlinedInput,
+} from "@mui/material";
 import { useState } from "react";
 
 const PACETYPE = {
@@ -18,7 +24,22 @@ export const AutocompleteForm = () => {
       value={type}
       onChange={(_, value) => setType(value)}
       renderInput={(params) => (
-        <TextField {...params} label={"のんびり"} helperText={"のんびり"} />
+        <FormControl fullWidth={params.fullWidth} disabled={params.disabled}>
+          <FormLabel htmlFor={params.id}>{"のんびり"}</FormLabel>
+
+          <OutlinedInput
+            {...params.slotProps.input}
+            id={params.id}
+            inputProps={{
+              ...params.slotProps.htmlInput,
+              "aria-describedby": `${params.id}-description`,
+            }}
+          />
+
+          <FormHelperText id={`${params.id}-description`}>
+            {"のんびり"}
+          </FormHelperText>
+        </FormControl>
       )}
     />
   );
