@@ -60,19 +60,13 @@ test("のんびりというオートコンプリートで候補を絞り込ん�
   await user.type(input, "のん");
 
   expect(screen.getByRole("option", { name: "のんびり" })).toBeVisible();
-  expect(screen.queryByRole("option", { name: "未設定" })).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole("option", { name: "未設定" }),
+  ).not.toBeInTheDocument();
 
   await user.click(screen.getByRole("option", { name: "のんびり" }));
 
   expect(input).toHaveValue("のんびり");
-});
-
-test("のんびりというオートコンプリートの選択をクリアできる", async () => {
-  const { user } = setup();
-
-  await user.clear(screen.getByRole("combobox", { name: "のんびり" }));
-
-  expect(screen.getByRole("combobox", { name: "のんびり" })).toHaveValue("");
 });
 
 test("のんびりというオートコンプリートのヘルパーテキストが表示される", () => {

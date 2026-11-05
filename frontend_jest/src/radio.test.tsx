@@ -47,5 +47,7 @@ test("のんびりというラジオでのんびりを選択できる", async ()
 test("のんびりというラジオのヘルパーテキストが表示される", () => {
   setup();
 
-  expect(screen.getByRole("radiogroup", { name: "のんびり" })).toHaveAccessibleDescription("のんびり");
+  expect(
+    screen.getByRole("radiogroup", { name: "のんびり" }),
+  ).toHaveAccessibleDescription("のんびり");
 });
