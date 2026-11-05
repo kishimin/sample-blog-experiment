@@ -1,30 +1,32 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { IconButton } from "./icon-button";
+import { IconButtonExample } from "./icon-button";
 
 const setup = () => {
   const user = userEvent.setup();
-  const onClick = jest.fn();
 
-  render(
-    <IconButton aria-label={"閉じる"} onClick={onClick}>
-      <span aria-hidden={true}>{"×"}</span>
-    </IconButton>,
-  );
+  render(<IconButtonExample />);
 
-  return { user, onClick };
+  return { user };
 };
 
-test("閉じるというアイコンボタンが表示される", () => {
+test("お気に入りというアイコンボタンが表示される", () => {
   setup();
 
-  expect(screen.getByRole("button", { name: "閉じる" })).toBeVisible();
+  expect(screen.getByRole("button", { name: "お気に入り" })).toBeVisible();
 });
 
-test("閉じるというアイコンボタンを押すと処理が実行される", async () => {
-  const { user, onClick } = setup();
+test("お気に入りというアイコンボタンを切り替えることができる", async () => {
+  const { user } = setup();
+  const button = screen.getByRole("button", { name: "お気に入り" });
 
-  await user.click(screen.getByRole("button", { name: "閉じる" }));
+  expect(button).toHaveAttribute("aria-pressed", "false");
 
-  expect(onClick).toHaveBeenCalledTimes(1);
+  await user.click(button);
+
+  expect(button).toHaveAttribute("aria-pressed", "true");
+
+  await user.click(button);
+
+  expect(button).toHaveAttribute("aria-pressed", "false");
 });

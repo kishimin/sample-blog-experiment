@@ -1,5 +1,13 @@
-import { Button as MuiButton, type ButtonProps } from "@mui/material";
+import { Button } from "@mui/material";
+import { useState } from "react";
 
-export const Button = (props: ButtonProps) => {
-  return <MuiButton {...props} />;
+export const ButtonExample = () => {
+  const [clicked, setClicked] = useState<boolean>(false);
+
+  return (
+    <>
+      <Button onClick={() => setClicked(true)}>{"のんびり"}</Button>
+      {clicked && <p>{"のんびりしました"}</p>}
+    </>
+  );
 };

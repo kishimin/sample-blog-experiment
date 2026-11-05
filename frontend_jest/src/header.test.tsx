@@ -2,19 +2,15 @@ import { render, screen, within } from "@testing-library/react";
 import { Header } from "./header";
 
 const setup = () => {
-  render(
-    <Header>
-      <a href={"/"}>{"ホーム"}</a>
-    </Header>,
-  );
+  render(<Header />);
 };
 
-test("ヘッダーにホームへのリンクが表示される", () => {
+test("ヘッダーにサイト名とホームへのリンクが表示される", () => {
   setup();
 
   const header = screen.getByRole("banner");
 
-  expect(within(header).getByRole("link", { name: "ホーム" })).toHaveAttribute(
+  expect(within(header).getByRole("link", { name: "のんびり" })).toHaveAttribute(
     "href",
     "/",
   );

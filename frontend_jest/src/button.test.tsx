@@ -1,32 +1,25 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Button } from "./button";
+import { ButtonExample } from "./button";
 
-const setup = (disabled = false) => {
+const setup = () => {
   const user = userEvent.setup();
-  const onClick = jest.fn();
 
-  render(<Button disabled={disabled} onClick={onClick}>{"保存"}</Button>);
+  render(<ButtonExample />);
 
-  return { user, onClick };
+  return { user };
 };
 
-test("保存というボタンが表示される", () => {
+test("のんびりというボタンが表示される", () => {
   setup();
 
-  expect(screen.getByRole("button", { name: "保存" })).toBeVisible();
+  expect(screen.getByRole("button", { name: "のんびり" })).toBeVisible();
 });
 
-test("保存というボタンを押すと処理が実行される", async () => {
-  const { user, onClick } = setup();
+test("のんびりというボタンを押すとメッセージが表示される", async () => {
+  const { user } = setup();
 
-  await user.click(screen.getByRole("button", { name: "保存" }));
+  await user.click(screen.getByRole("button", { name: "のんびり" }));
 
-  expect(onClick).toHaveBeenCalledTimes(1);
-});
-
-test("保存というボタンを無効にできる", () => {
-  setup(true);
-
-  expect(screen.getByRole("button", { name: "保存" })).toBeDisabled();
+  expect(screen.getByText("のんびりしました")).toBeVisible();
 });

@@ -1,5 +1,9 @@
-import { Box, type BoxProps } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
-export const Footer = (props: BoxProps<"footer">) => {
-  return <Box component={"footer"} {...props} />;
+export const Footer = () => {
+  return (
+    <Box component={"footer"}>
+      <Typography>{"© のんびり"}</Typography>
+    </Box>
+  );
 };

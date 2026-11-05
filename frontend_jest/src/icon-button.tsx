@@ -1,8 +1,16 @@
-import {
-  IconButton as MuiIconButton,
-  type IconButtonProps,
-} from "@mui/material";
+import { IconButton } from "@mui/material";
+import { useState } from "react";
 
-export const IconButton = (props: IconButtonProps) => {
-  return <MuiIconButton {...props} />;
+export const IconButtonExample = () => {
+  const [favorite, setFavorite] = useState<boolean>(false);
+
+  return (
+    <IconButton
+      aria-label={"お気に入り"}
+      aria-pressed={favorite}
+      onClick={() => setFavorite(!favorite)}
+    >
+      <span aria-hidden={true}>{"★"}</span>
+    </IconButton>
+  );
 };
