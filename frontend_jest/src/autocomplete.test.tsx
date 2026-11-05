@@ -16,10 +16,10 @@ test("のんびりというオートコンプリートが表示される", () =>
   expect(screen.getByRole("combobox", { name: "のんびり" })).toBeVisible();
 });
 
-test("のんびりというオートコンプリートの初期値は未設定である", () => {
+test("のんびりというオートコンプリートの初期値は空である", () => {
   setup();
 
-  expect(screen.getByRole("combobox", { name: "のんびり" })).toHaveValue("未設定");
+  expect(screen.getByRole("combobox", { name: "のんびり" })).toHaveValue("");
 });
 
 test("のんびりというオートコンプリートの選択肢が仕様通りである", async () => {
