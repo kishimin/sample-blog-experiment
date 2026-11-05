@@ -5,7 +5,7 @@ import {
   FormLabel,
   OutlinedInput,
 } from "@mui/material";
-import { useId, useState } from "react";
+import { useState } from "react";
 
 const PACETYPE = {
   NOT: "未設定",
@@ -17,14 +17,13 @@ type PaceType = (typeof PACETYPE)[keyof typeof PACETYPE];
 
 export const AutocompleteForm = () => {
   const [type, setType] = useState<PaceType | null>(PACETYPE.NOT);
-  const id = useId();
 
   return (
     <FormControl>
-      <FormLabel htmlFor={id}>{"のんびり"}</FormLabel>
+      <FormLabel htmlFor={"autocomplete"}>{"のんびり"}</FormLabel>
 
       <Autocomplete
-        id={id}
+        id={"autocomplete"}
         options={[PACETYPE.NOT, PACETYPE.NONBIRI, PACETYPE.MYPACE]}
         value={type}
         onChange={(_, value) => setType(value)}
@@ -34,13 +33,13 @@ export const AutocompleteForm = () => {
             id={params.id}
             inputProps={{
               ...params.slotProps.htmlInput,
-              "aria-describedby": `${id}-description`,
+              "aria-describedby": "autocomplete-description",
             }}
           />
         )}
       />
 
-      <FormHelperText id={`${id}-description`}>{"のんびり"}</FormHelperText>
+      <FormHelperText id={"autocomplete-description"}>{"のんびり"}</FormHelperText>
     </FormControl>
   );
 };
