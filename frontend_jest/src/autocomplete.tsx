@@ -16,7 +16,7 @@ const PACETYPE = {
 type PaceType = (typeof PACETYPE)[keyof typeof PACETYPE];
 
 export const AutocompleteForm = () => {
-  const [type, setType] = useState<PaceType | null>(PACETYPE.NOT);
+  const [type, setType] = useState<PaceType | null>(null);
 
   return (
     <FormControl>
