@@ -22,10 +22,17 @@ export const SelectForm = () => {
     <FormControl>
       <FormLabel id={"select"}>{"のんびり"}</FormLabel>
 
-      <Select
+      <Select<PaceType>
         labelId={"select"}
         value={type}
-        onChange={(e) => setType(e.target.value)}
+        onChange={(e) => {
+          for (const pace of Object.values(PACETYPE)) {
+            if (pace === e.target.value) {
+              setType(pace);
+              break;
+            }
+          }
+        }}
         aria-describedby={"select-description"}
       >
         <MenuItem value={PACETYPE.NOT}>{PACETYPE.NOT}</MenuItem>

@@ -29,10 +29,10 @@ export const AutocompleteForm = () => {
         onChange={(_, value) => setType(value)}
         renderInput={(params) => (
           <OutlinedInput
-            {...params.slotProps.input}
+            {...params.InputProps}
             id={params.id}
             inputProps={{
-              ...params.slotProps.htmlInput,
+              ...params.inputProps,
               "aria-describedby": "autocomplete-description",
             }}
           />
